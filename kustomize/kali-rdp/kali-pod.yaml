@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: rdp-kali-linux
+spec:
+  containers:
+  - name: rdp-kali-linux
+    image: heywoodlh/rdp-kali-linux-full:2022.4
+    ports:
+    - containerPort: 3389

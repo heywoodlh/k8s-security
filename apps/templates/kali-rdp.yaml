@@ -10,10 +10,12 @@ spec:
     namespace: security
   project: security
   source:
-    path: kustomize/kali-rdp
+    path: kustomize/kali-rdp/overlays/main
     repoURL: https://github.com/heywoodlh/k8s-security
     targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

@@ -10,6 +10,9 @@ helmCharts:
       repository: mittwald/kubernetes-secret-generator
       tag: v3.4.0
     watchNamespace: ""
+    rbac:
+      create: true
+      clusterRole: true
   releaseName: kubernetes-secret-generator
   version: 3.4.0
   repo: https://helm.mittwald.de 

@@ -9,6 +9,8 @@ helmCharts:
       registry: quay.io
       repository: mittwald/kubernetes-secret-generator
       tag: v3.4.0
+    rbac:
+      clusterRole: false
     watchNamespace: ""
   releaseName: kubernetes-secret-generator
   version: 3.4.0

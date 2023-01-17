@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gophish
+  labels: 
+    app.kubernetes.io/name: gophish
+spec:
+  containers:
+  - name: gophish
+    image: docker.io/heywoodlh/gophish:0.12.1
+    ports:
+    - containerPort: 80
+    - containerPort: 3333
+    env: 
+      - name: ADMIN_CERT_PATH
+        value: "/data/gophish.crt"
+      - name: ADMIN_CERT_PATH
+        value: "/data/gophish.key"
+      - name: DB_FILE_PATH
+        value: "/data/gophish.db"
+      - name: PHISH_LISTEN_URL
+        value: "0.0.0.0:80"
+    volumeMounts: 
+      - 
+        mountPath: /data
+        name: gophish-data
+  volumes: 
+    - 
+      name: gophish-data
+      persistentVolumeClaim: 
+        claimName: gophish-pvc
+  imagePullPolicy: Always

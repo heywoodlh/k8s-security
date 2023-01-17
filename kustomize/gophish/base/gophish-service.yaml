@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gophish
+spec:
+  selector:
+    app.kubernetes.io/name: gophish
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      name: gophish-http
+    - protocol: TCP
+      port: 3333
+      targetPort: 3333
+      name: gophish-phish

@@ -4,7 +4,7 @@ metadata:
   name: kali-rdp
   finalizers:
   - resources-finalizer.argocd.argoproj.io
-  namespace: argocd
+  namespace: security
 spec:
   destination:
     server: https://kubernetes.default.svc
@@ -14,6 +14,8 @@ spec:
     path: kustomize/kali-rdp/overlays/main
     repoURL: https://github.com/heywoodlh/k8s-security
     targetRevision: HEAD
+    directory:
+      recurse: false
   syncPolicy:
     automated:
       prune: true

@@ -13,20 +13,20 @@ spec:
     - containerPort: 3333
     env: 
       - name: ADMIN_CERT_PATH
-        value: "/data/gophish.crt"
+        value: "/security/gophish/gophish.crt"
       - name: ADMIN_CERT_PATH
-        value: "/data/gophish.key"
+        value: "/security/gophish/gophish.key"
       - name: DB_FILE_PATH
-        value: "/data/gophish.db"
+        value: "/security/gophish/gophish.db"
       - name: PHISH_LISTEN_URL
         value: "0.0.0.0:80"
     volumeMounts: 
       - 
-        mountPath: /data
-        name: gophish-data
+        mountPath: /security
+        name: security-data
   volumes: 
     - 
-      name: gophish-data
+      name: security-data
       persistentVolumeClaim: 
-        claimName: gophish-pvc
+        claimName: security-pvc
   imagePullPolicy: Always

@@ -4,7 +4,9 @@ metadata:
   name: kali-rdp
   finalizers:
   - resources-finalizer.argocd.argoproj.io
-  namespace: security
+  namespace: argocd
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   destination:
     server: https://kubernetes.default.svc

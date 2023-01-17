@@ -11,3 +11,17 @@ spec:
     ports:
     - containerPort: 3389
     - containerPort: 22
+  - 
+    env: 
+      - 
+        name: USER
+        valueFrom:
+          secretKeyRef:
+            name: kali-rdp-secrets
+            key: username
+      - 
+        name: PASSWORD
+        valueFrom:
+          secretKeyRef:
+            name: kali-rdp-secrets
+            key: password

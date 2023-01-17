@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bootstrap-app
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  namespace: security
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: security
+  project: security
+  source:
+    path: apps
+    repoURL: https://github.com/heywoodlh/k8s-security
+    targetRevision: HEAD
+    directory:
+      recurse: false
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

@@ -12,7 +12,7 @@ spec:
   source:
     path: apps/
     repoURL: https://github.com/heywoodlh/k8s-security
-    targetRevision: HEAD
+    targetRevision: 904c13853472560eb272d58c9d55fb421e577166
   syncPolicy:
     automated:
       prune: true

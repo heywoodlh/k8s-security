@@ -1,6 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: security
+resources:
+- ./rolebinding.yaml
 helmCharts:
 - name: kubernetes-secret-generator
   includeCRDs: true
@@ -9,8 +11,6 @@ helmCharts:
       registry: quay.io
       repository: mittwald/kubernetes-secret-generator
       tag: v3.4.0
-    rbac:
-      clusterRole: false
     watchNamespace: ""
   releaseName: kubernetes-secret-generator
   version: 3.4.0

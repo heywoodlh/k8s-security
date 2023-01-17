@@ -6,6 +6,7 @@ metadata:
     app.kubernetes.io/name: kali-rdp
 spec:
   containers:
+  imagePullPolicy: always
   - name: rdp-kali-linux
     image: docker.io/heywoodlh/rdp-kali-linux-full:2022.4
     ports:

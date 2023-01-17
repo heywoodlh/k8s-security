@@ -4,5 +4,5 @@ namespace: security
 resources:
   - ./operator.yaml
   - ./role_binding.yaml
-  - ./role_with_service_permissions.yaml
+  - ./role.yaml
   - ./service_account.yaml

@@ -4,8 +4,7 @@ metadata:
   name: gophish
 spec:
   selector:
-    matchLabels:
-      app: gophish 
+    app: gophish 
   ports:
     - protocol: TCP
       port: 80

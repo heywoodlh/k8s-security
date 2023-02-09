@@ -3,12 +3,12 @@ kind: Deployment
 metadata:
   name: gophish
   labels:
-    app: gophish
+    app.kubernetes.io/name: gophish
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gophish
+      app.kubernetes.io/name: gophish
   template:
     spec:
       initContainers:

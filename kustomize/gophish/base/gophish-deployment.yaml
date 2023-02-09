@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gophish
+  labels:
+    app: gophish
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gophish
+  template:
+    spec:
+      initContainers:
+      - name: volume-dirs-init-cntr
+        image: docker.io/busybox:1.36
+        imagePullPolicy: ifNotPresent
+        command:
+        - "/bin/mkdir"
+        args:
+        - "-p"
+        - "/security/gophish"
+        volumeMounts:
+        - mountPath: /security
+          name: security-data
+      containers:
+      - name: gophish
+        image: docker.io/heywoodlh/gophish:0.12.0
+        imagePullPolicy: ifNotPresent
+        ports:
+        - containerPort: 80
+        - containerPort: 3333
+        env: 
+          - name: ADMIN_CERT_PATH
+            value: "/security/gophish/gophish.crt"
+          - name: ADMIN_CERT_PATH
+            value: "/security/gophish/gophish.key"
+          - name: DB_FILE_PATH
+            value: "/security/gophish/gophish.db"
+          - name: PHISH_LISTEN_URL
+            value: "0.0.0.0:80"
+        volumeMounts: 
+        - mountPath: /security
+          name: security-data
+      volumes: 
+        - 
+          name: security-data
+          persistentVolumeClaim: 
+            claimName: security-pvc

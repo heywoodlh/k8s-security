@@ -4,7 +4,7 @@ metadata:
   name: gophish
 spec:
   selector:
-    app.kubernetes.io/name: gophish
+    app: gophish
   ports:
     - protocol: TCP
       port: 80

@@ -3,13 +3,16 @@ kind: Deployment
 metadata:
   name: gophish
   labels:
-    app.kubernetes.io/name: gophish
+    app: gophish
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: gophish
+      app: gophish
   template:
+    metadata:
+      labels:
+        app: gophish
     spec:
       initContainers:
       - name: volume-dirs-init-cntr

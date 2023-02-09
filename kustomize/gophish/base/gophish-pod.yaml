@@ -5,9 +5,20 @@ metadata:
   labels: 
     app.kubernetes.io/name: gophish
 spec:
+  initContainers:
+  - name: volume-dirs-init-cntr
+    image: busybox:1.36
+    command:
+    - "/bin/mkdir"
+    args:
+    - "-p"
+    - "/security/gophish"
+    volumeMounts:
+    - mountPath: /security
+      name: security-data
   containers:
   - name: gophish
-    image: docker.io/heywoodlh/gophish:0.12.1
+    image: docker.io/heywoodlh/gophish:0.12.0
     ports:
     - containerPort: 80
     - containerPort: 3333
@@ -21,9 +32,8 @@ spec:
       - name: PHISH_LISTEN_URL
         value: "0.0.0.0:80"
     volumeMounts: 
-      - 
-        mountPath: /security
-        name: security-data
+    - mountPath: /security
+      name: security-data
   volumes: 
     - 
       name: security-data

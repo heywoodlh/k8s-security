@@ -11,7 +11,7 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: security
-  project: security
+  project: default
   source:
     path: kustomize/kali-rdp/overlays/main
     repoURL: https://github.com/heywoodlh/k8s-security

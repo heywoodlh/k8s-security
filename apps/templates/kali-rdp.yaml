@@ -15,7 +15,7 @@ spec:
   source:
     path: kustomize/kali-rdp/overlays/main
     repoURL: https://github.com/heywoodlh/k8s-security
-    targetRevision: HEAD
+    targetRevision: {{ .Values.version }}
     directory:
       recurse: false
   syncPolicy:

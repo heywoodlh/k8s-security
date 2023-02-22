@@ -13,7 +13,7 @@ spec:
   source:
     path: charts/argo-cd
     repoURL: https://github.com/heywoodlh/k8s-security.git
-    targetRevision: HEAD
+    targetRevision: {{ .Values.version }}
   syncPolicy:
     automated:
       prune: true
